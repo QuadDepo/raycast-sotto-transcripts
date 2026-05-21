@@ -1,4 +1,4 @@
-import { Action, ActionPanel, Clipboard, Icon, List, Toast, closeMainWindow, showToast } from "@raycast/api";
+import { Action, ActionPanel, Clipboard, Icon, List, Toast, closeMainWindow, showHUD, showToast } from "@raycast/api";
 import { memo } from "react";
 import { formatCost } from "../util/format-cost";
 import { formatDuration } from "../util/format-duration";
@@ -57,6 +57,7 @@ function EntryItemView({ entry, onReload, onToggleDetail, showingDetail }: Entry
             onAction={async () => {
               await Clipboard.paste(entry.transcript);
               await closeMainWindow();
+              await showHUD("Pasted transcript");
             }}
           />
           <Action.Push
